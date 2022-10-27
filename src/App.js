@@ -1,9 +1,7 @@
-import './App.css';
-import Pricing from './components/Pricing';
+import "./App.css";
+import Pricing from "./components/Pricing";
 function App() {
-  return (
- 
-      <Pricing/>
+  return <Pricing />;
 }
 
 export default App;
