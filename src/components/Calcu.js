@@ -84,9 +84,9 @@ function calculeMont(value) {
   return a;
 }
 export default function NonLinearSlider() {
-  const [value, setValue] = React.useState(1);
-  const [percent, setPercent] = React.useState(1);
-  const [meses, setMeses] = React.useState(12);
+  const [value, setValue] = React.useState(0);
+  const [percent, setPercent] = React.useState(0);
+  const [meses, setMeses] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     if (typeof newValue === "number") {
@@ -99,23 +99,14 @@ export default function NonLinearSlider() {
     }
   };
 
-  const handleChange3 = (event, ) => {
-  
-        setMeses(12);
-      
-    
+  const handleChange3 = (event) => {
+    setMeses(12);
   };
-  const handleChange4 = (event, ) => {
-    
-        setMeses(24);
-      
-    
+  const handleChange4 = (event) => {
+    setMeses(24);
   };
-  const handleChange5 = (event, ) => {
-   
-        setMeses(32);
-      
-    
+  const handleChange5 = (event) => {
+    setMeses(32);
   };
   return (
     <Box sx={{ mt: "40px", ml: "10%", width: "100%" }}>
@@ -160,9 +151,15 @@ export default function NonLinearSlider() {
       <Grid xs={12} md={12}>
         <Item2 className="item2">
           <h4>Meses</h4>
-          <button onClick={handleChange3} className="btnRadio">12</button>
-          <button  onClick={handleChange4} className="btnRadio">24</button>
-          <button  onClick={handleChange5} className="btnRadio">32</button>
+          <button onClick={handleChange3} className="btnRadio">
+            12
+          </button>
+          <button onClick={handleChange4} className="btnRadio">
+            24
+          </button>
+          <button onClick={handleChange5} className="btnRadio">
+            32
+          </button>
         </Item2>
       </Grid>
       <Grid xs={12} md={12}>
