@@ -62,7 +62,6 @@ const Client = ( {onSubmitClient} ) => {
               <h1 className="HomeTitle">
               Enter Your Information
               </h1>
-              <p><span className="pri">Please note that the North Branch Office is closed on Mondays</span></p>
               <div className="TextInfo">
 <div  className="SelectServ">
 <FormControl fullWidth>
