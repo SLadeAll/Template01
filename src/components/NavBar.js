@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-
+import Logo from './Assets/Logos/logo.svg'
 import BurgerButton from "./BurgerButton";
 
 function Navbar() {
@@ -12,9 +12,8 @@ function Navbar() {
   return (
     <>
       <NavContainer>
-        <h2>
-          Lateral
-        </h2>
+        <img src = {`${Logo}`} alt="Logo" className="LogoNav"/>
+        <p> My DMV Online Appointments </p>
         <div className={`links ${clicked ? "active" : ""}`}>
           <a href="#h">Home</a>
           <a href="#h">Features</a>
