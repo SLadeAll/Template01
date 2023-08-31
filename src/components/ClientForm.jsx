@@ -11,16 +11,46 @@ import Stack from "@mui/material/Stack";
 import TextField from '@mui/material/TextField';
 
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-const Client = ( changeStep ) => {
-  const [client, setClient] = React.useState({});
-  const submitClient = (FN, LN, PN, DoB) => {
-    setClient( [{firstName: FN }, {lastName: LN }, {phoneNumber: PN}, {dateBirth: DoB}] )
+const Client = ( {onSubmitClient} ) => {
+  //const [client, setClient] = React.useState({});
+  const [firstName, setFirstName] = React.useState();
+  const [lastName, setLastName] = React.useState();
+  const [phone, setPhone] = React.useState();
+  const [date, setDate] = React.useState(new Date());
+
+  
+  const handleName = (event) =>{
+    setFirstName(event.target.value)
+  }
+  const handleLastName = (event) =>{
+    setLastName(event.target.value)
+  }
+  const handlePhone = (event) =>{
+    setPhone(event.target.value)
+  }
+  const handleDate = (event) =>{
+    setDate(event.target.value)
+  }
+
+  const submitClient = () => {
+    if(lastName && firstName && phone && date){
+      
+      const client = {
+        firstName,
+        lastName,
+        phone,
+        date,
+      };
+      onSubmitClient(client)
+      alert("Info saved")
+    }
+    else{
+      alert("Please fill all the fields")
+    }
   }
   return (
-    <Box maxWidth="false" sx={{ flexGrow: 2 }}>
+    <Box className="" maxWidth="false" sx={{ flexGrow: 2 }}>
     <Grid container spacing={3}>
-      <Grid xs={12} md={1}></Grid>  
-      <Grid xs={12} md={6}>
         <Item>
           <Stack
             direction="column"
@@ -34,22 +64,21 @@ const Client = ( changeStep ) => {
               </h1>
               <p><span className="pri">Please note that the North Branch Office is closed on Mondays</span></p>
               <div className="TextInfo">
-<div  classname="SelectServ">
+<div  className="SelectServ">
 <FormControl fullWidth>
-<TextField id="outlined-basic" label=" First Name (required): " variant="outlined" />
-<TextField id="outlined-basic" label=" Last Name (required): " variant="outlined" />
-<TextField id="outlined-basic" label=" Phone Number (required): " variant="outlined" />
-<TextField id="outlined-basic" label=" Date of Birth :" variant="outlined" />
-<ButOn>
+<TextField id="outlined-basic" onChange={handleName} className="inputClient" label=" First Name (required): " variant="outlined" />
+<TextField id="outlined-basic" onChange={handleLastName} className="inputClient" label=" Last Name (required): " variant="outlined" />
+<TextField inputProps={{ maxLength: 12 }} type="number" id="outlined-basic" onChange={handlePhone} className="inputClient" label=" Phone Number (required): " variant="outlined" />
+<TextField id="outlined-basic" onChange={handleDate} className="inputClient" label=" Date of Birth :" variant="outlined" />
+  </FormControl>
+  <ButOn>
                 <button className="Log" onClick={submitClient}>Submit</button>
             </ButOn>
-  </FormControl>
   </div>
               </div>
             </Item>
           </Stack>
         </Item>
-      </Grid>
     </Grid>
   </Box>
   );
@@ -74,8 +103,7 @@ const Item = styled(Paper)(({ theme }) => ({
   const ButOn = styles.button`
 border: 0px;
 background-color: transparent;
-align-items: center;
-justify-content: space-between;
+margin: 5px 0px;
 .Log{
   cursor: pointer;
   border: 1px solid #65C8DB ;

@@ -15,13 +15,11 @@ const Location = ( {changeLocation} ) => {
 
   const handleChange = event => {
     setAge(event.target.value);
-    changeLocation(age)
+    changeLocation(event.target.value)
   };
   return (
     <Box maxWidth="false" sx={{ flexGrow: 2 }}>
     <Grid container spacing={3}>
-      <Grid xs={12} md={1}></Grid>  
-      <Grid xs={12} md={6}>
         <Item>
           <Stack
             direction="column"
@@ -35,7 +33,7 @@ const Location = ( {changeLocation} ) => {
               </h1>
               <p><span className="pri">Please note that the North Branch Office is closed on Mondays</span></p>
               <div className="TextInfo">
-<div  classname="SelectServ">
+<div  className="SelectServ">
 <FormControl fullWidth>
     <Select
       labelId="demo-simple-select-label"
@@ -56,7 +54,6 @@ const Location = ( {changeLocation} ) => {
             </Item>
           </Stack>
         </Item>
-      </Grid>
     </Grid>
   </Box>
   );

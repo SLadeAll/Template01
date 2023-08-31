@@ -13,14 +13,12 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 const Service = ( {onChangeService}) => {
   const [age, setAge] = React.useState('');
   const handleChange = event => {
-    setAge(event.target.value);
-    onChangeService(age)
+    setAge(event.target.value)
+    onChangeService(event.target.value)
   };
   return (
-    <Box maxWidth="false" sx={{ flexGrow: 2 }}>
+    <Box className="insideBox" maxWidth="false" sx={{ flexGrow: 2 }}>
     <Grid container spacing={3}>
-      <Grid xs={12} md={1}></Grid>  
-      <Grid xs={12} md={6}>
         <Item>
           <Stack
             direction="column"
@@ -33,7 +31,7 @@ const Service = ( {onChangeService}) => {
                 Select a Service 
               </h1>
               <div className="TextInfo">
-<div  classname="SelectServ">
+<div  className="SelectServ">
 <FormControl fullWidth>
     <Select
       labelId="demo-simple-select-label"
@@ -52,7 +50,6 @@ const Service = ( {onChangeService}) => {
             </Item>
           </Stack>
         </Item>
-      </Grid>
     </Grid>
   </Box>
   );
@@ -60,10 +57,8 @@ const Service = ( {onChangeService}) => {
 
 export default Service;
 const Item = styled(Paper)(({ theme }) => ({
-    border: 0,
     boxShadow: "none",
     padding: theme.spacing(3),
-    textAlign: "left",
   
   }));
 
