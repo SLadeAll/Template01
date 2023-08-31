@@ -14,6 +14,7 @@ import "./styles/PricingStyle.css";
 import Service from "./SelectService";
 import Location from "./SelectLocation";
 import Client from "./ClientForm"
+import Info from "./ClientInfo"
 
 function PricingContent() {
   const [service, setService] = React.useState('');
@@ -36,7 +37,7 @@ function PricingContent() {
   return (
     <React.Fragment>
       <GlobalStyles
-        styles={{ ul: { margin: 10, padding: 5, listStyle: "none" } }}
+        styles={{ ul: { margin: 0, padding: 5, listStyle: "none" } }}
       />
       <CssBaseline />
       <AppBar
@@ -45,25 +46,32 @@ function PricingContent() {
         elevation={0}
         sx={{
           zIndex: 1250,
-          mb: 4,
           borderBottom: (theme) => `0px solid ${theme.palette.divider}`,
         }}
       >
-        <Toolbar sx={{ zIndex: 1252, flexWrap: "wrap", mb:3 }}>
+        <Toolbar sx={{ zIndex: 1252, flexWrap: "wrap" }}>
           <Typography variant="h6" noWrap sx={{ flexGrow: 1 }}>
             <NavBar />
           </Typography>
         </Toolbar>
       </AppBar>
-        {step==0 && <Service changeStep={handleChangeStep} onChangeService={(value) => handleChange(value)} />}
-        {step==1 && <Location changeStep={handleChangeStep} changeLocation={(value) => handleChangeLocation(value)} />}
-        {step==2 && <Client changeStep={handleChangeStep} onSubmitClient={(value) => handleClientInfo(value)}/>}
-          <Box className="HomeTitle" sx={{ flexGrow: 2 }}> 
+      <div className="forms">
+      <Box className="formBox">
+        {step==0 && <Service actualStep={step} changeStep={handleChangeStep} onChangeService={(value) => handleChange(value)} />}
+        {step==1 && <Location actualStep={step} changeStep={handleChangeStep} changeLocation={(value) => handleChangeLocation(value)} />}
+        {step==2 && <Client actualStep={step} changeStep={handleChangeStep} onSubmitClient={(value) => handleClientInfo(value)}/>}
+        {client && <Info Service={service} Location={location} ClientInfo={client}/>}
+        {client &&  <div  className="buttonsBaNex" sx={{ flexGrow: 2 }}> <ButOn>
+                <button className="Log" onClick={() => setClient(false)}>Clean Info</button>
+            </ButOn> </div>}
+      </Box>
+      </div>
+          <div  className="buttonsBaNex" sx={{ flexGrow: 2 }}> 
             <ButOn>
                 <button className="Log" onClick={() => setStep(step > 0 ? step-1 : step)}>Back</button>
                 <button className="Log2" onClick={() => setStep(step < 2 ? step+1 : step)}>Next</button>
             </ButOn>
-          </Box>
+          </div>
     </React.Fragment>
   );
 }
@@ -75,6 +83,7 @@ export default function Pricing() {
 const ButOn = styles.button`
 border: 0px;
 background-color: transparent;
+align-content: center;
 align-items: center;
 justify-content: space-between;
 .Log{

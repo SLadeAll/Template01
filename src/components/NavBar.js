@@ -11,16 +11,13 @@ function Navbar() {
   };
   return (
     <>
-      <NavContainer>
+      <NavContainer className="navBar">
         <img src = {`${Logo}`} alt="Logo" className="LogoNav"/>
         <p> My DMV Online Appointments </p>
         <div className={`links ${clicked ? "active" : ""}`}>
           <a href="#h">Home</a>
-          <a href="#h">Features</a>
-          <a href="#h">Pricing</a>
-          <a href="#h">Contact</a>
+          <a href="#h">Additional Resources</a>
           <button className="Log"> Login </button>
-          <button className="Log2"> Get Started </button>
         </div>
         <div className="burguer">
           <BurgerButton clicked={clicked} handleClick={handleClick} />
@@ -50,6 +47,9 @@ const NavContainer = styled.nav`
     text-decoration: none;
     margin-right: 1rem;
   }
+  .navBar{
+    margin: 0px !important;
+  }
   .Log{
         cursor: pointer;
         border: 1px solid #3498db;
@@ -67,18 +67,18 @@ const NavContainer = styled.nav`
 }
 .Log2{
     cursor: pointer;
-    border: 1px solid #fff;
+    border: 1px solid #3498db;
     background-color: transparent;
     height: 30px;
     width: 90px;
-    color: #fff;
+    color: #3498db;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
     border-radius: 30px;
     margin-right: 1rem;
 }
 .Log2:active{
   background-color: #3498db;
-  color: #fff;
+  color: #3498db;
 }
   .links {
     position: absolute;
@@ -143,6 +143,6 @@ const BgDiv = styled.div`
     top: 00;
     left: 0;
     width: 100%;
-    height: 390%;
+    height: 100vh;
   }
 `;

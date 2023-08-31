@@ -5,7 +5,14 @@
 .pri{
     color: #A76AD1;
 }
+.buttonsBaNex{   
+    align-content: center;
+    display: grid;
+    margin: 0px 0px 10px 0px !important;
+}
+.inputClient{margin: 5px 0px !important;}
 .HomeTitle{
+    margin: 0px;
     position: relative;
     width: 100%;
     font-weight: 3em;
@@ -20,4 +27,17 @@
 }
 p{
     font-size: large;
+}
+.formBox{
+    margin: 5px 20px;
+    padding: -10px;
+}
+.insideBox{
+    min-width: 100%;
+}
+.forms{
+    min-width: 100%;
+    align-items: center;
+    display: grid !important;
+    justify-content: center;
 }
